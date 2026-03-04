@@ -2,14 +2,14 @@
   "buildCommand": "npm run build",
   "framework": null,
   "functions": {
-    "api/index.php": {
+    "puplic/index.php": {
       "runtime": "vercel-php@0.7.3"
     }
   },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/api/index.php"
+      "dest": "/public/index.php"
     }
   ]
 }
