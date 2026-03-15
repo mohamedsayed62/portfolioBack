@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\RecieveEmailJob;
+use App\Jobs\SendEmailJob;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
+use App\Mail\recieveMail;
 class ContactController extends Controller
 {
 
@@ -17,23 +20,13 @@ public function send(Request $request)
         'message' => 'required'
     ]);
 
-    Mail::to($request->email)->send(new ContactMail($data));
+    SendEmailJob::dispatch($data);
+    RecieveEmailJob::dispatch($data);
+        return view("emails.contact", ["data" => $data]);
     return response()->json([
         'status' => true,
         'message' => 'Email sent successfully'
     ]);
 }
 
-public function recieve(Request $request) {
-        $data = $request->validate([
-        'name' => 'required',
-        'email' => 'required|email',
-        'message' => 'required'
-    ]);
-    Mail::to(config('mail.portfolio_owner'))->send(new ContactMail($data));
-    return response()->json([
-        'status' => true,
-        'message' => 'Email sent successfully'
-    ]);
-}
 }

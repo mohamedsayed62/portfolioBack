@@ -11,11 +11,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f1a2735 (update project)
 Route::get('showSkills', [skillsController::class, 'show']);
 Route::get('showProjects', [projectController::class, 'show']);
 Route::post('contact', [ContactController::class, 'send']);
-Route::post('recieve', [ContactController::class, 'recieve']);

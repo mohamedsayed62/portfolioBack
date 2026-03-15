@@ -13,8 +13,8 @@ class skillsController extends Controller
     $skills = Skill::all();
     return view("skills.index", ["skills" => $skills]);
   }
-  public function createSkills() {
-    return view("skills");
+  public function create() {
+    return view("skills.create");
   }
 
   public function store(Request $request) {
@@ -25,6 +25,7 @@ class skillsController extends Controller
       'name' => $name,
       'icon' => $icon
     ]);
+    return redirect("./indexSkills");
   }
 
   public function edit($id) {

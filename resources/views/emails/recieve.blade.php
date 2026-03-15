@@ -14,17 +14,12 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <h1>✅ Message Sent!</h1>
+            <h1>✅ Message Received!</h1>
         </div>
         <div class="body">
-            <p>Hi <strong>{{ $data["name"] }}</strong>,</p>
-            <p>Thanks for reaching out! I've received your message and will get back to you as soon as possible.</p>
-            <p><strong>Your message:</strong></p>
-            <div class="message-box">{{ $data['message'] }}</div>
-            <p style="margin-top: 24px;">Talk soon,<br><strong>Mohamed Abdeltwab</strong></p>
-        </div>
-        <div class="footer">
-            This is an automated confirmation — please don't reply to this email.
+            <div class="message-box">name | {{ $data['name'] }}</div>
+            <div class="message-box">email | {{ $data['email'] }}</div>
+            <div class="message-box">message | {{ $data['message'] }}</div>
         </div>
     </div>
 </body>
